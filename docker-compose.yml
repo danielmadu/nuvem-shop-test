@@ -26,7 +26,7 @@ services:
   app:
     image: ambientum/php:7.2-nginx
     container_name: sandbox-app
-    command: bash -c "php artisan migrate && php artisan storage:link && /home/ambientum/start.sh"
+    command: bash -c "php artisan migrate && /home/ambientum/start.sh"
 
     volumes:
       - .:/var/www/app
