@@ -39,6 +39,8 @@ Para executar a aplicação, execute o seguinte comando no terminal:
 php artisan migrate
 ```
 
+Acesse a aplicação através do endereço `http://localhost:8000`
+
 ## Docker
 
 Se você deseja executar a aplicação através do Docker basta executar o comando a seguir:
@@ -46,3 +48,5 @@ Se você deseja executar a aplicação através do Docker basta executar o coman
 ```
 docker-compose up
 ```
+
+Acesse a aplicação através do endereço `http://localhost:8000`
