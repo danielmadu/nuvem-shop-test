@@ -1,0 +1,36 @@
+# v2 syntax
+version: '2'
+
+# Named volumes
+volumes:
+  # MySQL Data
+  sandbox-mysql-data:
+    driver: local
+
+services:
+  # MySQL (5.7)
+  mysql:
+    image: mysql:5.7
+    container_name: sandbox-mysql
+    volumes:
+      - sandbox-mysql-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_DATABASE=homestead
+      - MYSQL_USER=homestead
+      - MYSQL_PASSWORD=secret
+
+  # PHP (with Nginx)
+  app:
+    image: ambientum/php:7.2-nginx
+    container_name: sandbox-app
+    command: bash -c "php artisan migrate && php artisan storage:link && /home/ambientum/start.sh"
+
+    volumes:
+      - .:/var/www/app
+    ports:
+      - "8000:8080"
+    links:
+      - mysql
